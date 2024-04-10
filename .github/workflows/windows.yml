@@ -8,13 +8,13 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.0.2
+        uses: microsoft/setup-msbuild@v2
 
       - name: Visual Studio shell
-        uses: egor-tensin/vs-shell@v1
+        uses: egor-tensin/vs-shell@v2
 
       - name: Setup Gluon's GraalVM
         uses: gluonhq/setup-graalvm@master
@@ -36,7 +36,7 @@ jobs:
       - name: Copy native bundles to staging
         run: |
           cp -r target/gluonfx/x86_64-windows/HelloGluon.exe staging
-          cp -r target/gluonfx/x86_64-windows/HelloGluon-1.0.msi staging
+          cp -r target/gluonfx/x86_64-windows/HelloGluon-1.2.msi staging
 
       - name: Upload
         uses: actions/upload-artifact@v2
